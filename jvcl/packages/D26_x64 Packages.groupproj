@@ -84,6 +84,9 @@
 			<Projects Include="D26_x64\JvRuntimeDesign.dproj">
 				<Dependencies/>
 			</Projects>
+			<Projects Include="D26_x64\Jv3rdDevEx.dproj">
+				<Dependencies/>
+			</Projects>
 		</ItemGroup>
 		<ProjectExtensions>
 			<Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -337,14 +340,23 @@
 		<Target Name="JvRuntimeDesign:Make">
 			<MSBuild Projects="D26_x64\JvRuntimeDesign.dproj" Targets="Make"/>
 		</Target>
+		<Target Name="Jv3rdDevEx">
+			<MSBuild Projects="D26_x64\Jv3rdDevEx.dproj"/>
+		</Target>
+		<Target Name="Jv3rdDevEx:Clean">
+			<MSBuild Projects="D26_x64\Jv3rdDevEx.dproj" Targets="Clean"/>
+		</Target>
+		<Target Name="Jv3rdDevEx:Make">
+			<MSBuild Projects="D26_x64\Jv3rdDevEx.dproj" Targets="Make"/>
+		</Target>
 		<Target Name="Build">
-			<CallTarget Targets="JvCore;JvSystem;JvStdCtrls;JvControls;JvCmp;JvCustom;JvDlgs;JvCrypt;JvMM;JvNet;JvAppFrm;JvDB;JvPascalInterpreter;JvBands;JvPluginSystem;JvJans;JvGlobus;JvPrintPreview;JvPageComps;JvWizards;JvTimeFramework;JvHMI;JvManagedThreads;JvXPCtrls;JvDocking;JvDotNetCtrls;JvRuntimeDesign"/>
+			<CallTarget Targets="JvCore;JvSystem;JvStdCtrls;JvControls;JvCmp;JvCustom;JvDlgs;JvCrypt;JvMM;JvNet;JvAppFrm;JvDB;JvPascalInterpreter;JvBands;JvPluginSystem;JvJans;JvGlobus;JvPrintPreview;JvPageComps;JvWizards;JvTimeFramework;JvHMI;JvManagedThreads;JvXPCtrls;JvDocking;JvDotNetCtrls;JvRuntimeDesign;Jv3rdDevEx"/>
 		</Target>
 		<Target Name="Clean">
-			<CallTarget Targets="JvCore:Clean;JvSystem:Clean;JvStdCtrls:Clean;JvControls:Clean;JvCmp:Clean;JvCustom:Clean;JvDlgs:Clean;JvCrypt:Clean;JvMM:Clean;JvNet:Clean;JvAppFrm:Clean;JvDB:Clean;JvPascalInterpreter:Clean;JvBands:Clean;JvPluginSystem:Clean;JvJans:Clean;JvGlobus:Clean;JvPrintPreview:Clean;JvPageComps:Clean;JvWizards:Clean;JvTimeFramework:Clean;JvHMI:Clean;JvManagedThreads:Clean;JvXPCtrls:Clean;JvDocking:Clean;JvDotNetCtrls:Clean;JvRuntimeDesign:Clean"/>
+			<CallTarget Targets="JvCore:Clean;JvSystem:Clean;JvStdCtrls:Clean;JvControls:Clean;JvCmp:Clean;JvCustom:Clean;JvDlgs:Clean;JvCrypt:Clean;JvMM:Clean;JvNet:Clean;JvAppFrm:Clean;JvDB:Clean;JvPascalInterpreter:Clean;JvBands:Clean;JvPluginSystem:Clean;JvJans:Clean;JvGlobus:Clean;JvPrintPreview:Clean;JvPageComps:Clean;JvWizards:Clean;JvTimeFramework:Clean;JvHMI:Clean;JvManagedThreads:Clean;JvXPCtrls:Clean;JvDocking:Clean;JvDotNetCtrls:Clean;JvRuntimeDesign:Clean;Jv3rdDevEx:Clean"/>
 		</Target>
 		<Target Name="Make">
-			<CallTarget Targets="JvCore:Make;JvSystem:Make;JvStdCtrls:Make;JvControls:Make;JvCmp:Make;JvCustom:Make;JvDlgs:Make;JvCrypt:Make;JvMM:Make;JvNet:Make;JvAppFrm:Make;JvDB:Make;JvPascalInterpreter:Make;JvBands:Make;JvPluginSystem:Make;JvJans:Make;JvGlobus:Make;JvPrintPreview:Make;JvPageComps:Make;JvWizards:Make;JvTimeFramework:Make;JvHMI:Make;JvManagedThreads:Make;JvXPCtrls:Make;JvDocking:Make;JvDotNetCtrls:Make;JvRuntimeDesign:Make"/>
+			<CallTarget Targets="JvCore:Make;JvSystem:Make;JvStdCtrls:Make;JvControls:Make;JvCmp:Make;JvCustom:Make;JvDlgs:Make;JvCrypt:Make;JvMM:Make;JvNet:Make;JvAppFrm:Make;JvDB:Make;JvPascalInterpreter:Make;JvBands:Make;JvPluginSystem:Make;JvJans:Make;JvGlobus:Make;JvPrintPreview:Make;JvPageComps:Make;JvWizards:Make;JvTimeFramework:Make;JvHMI:Make;JvManagedThreads:Make;JvXPCtrls:Make;JvDocking:Make;JvDotNetCtrls:Make;JvRuntimeDesign:Make;Jv3rdDevEx;Make"/>
 		</Target>
 		<Import Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')" Project="$(BDS)\Bin\CodeGear.Group.Targets"/>
 	</Project>
