@@ -222,7 +222,7 @@ begin
         HandleExpiredPassword(E.Message)
       else
         JvDSADialogs.MessageDlg(E.Message, mtError, [mbok], 0, dckScreen,
-          0, mbDefault, mbDefault, mbDefault, DynControlEngine);
+          0, mbDefault, mbDefault, mbHelp, DynControlEngine);
     end;
   end;
 end;
