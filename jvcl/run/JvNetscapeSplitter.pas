@@ -64,7 +64,7 @@ type
     FRestorePos: Integer;
     // For internal use to avoid calling GetButtonRect when not necessary
     FLastKnownButtonRect: TRect;
-    // Internal use to avoid unecessary painting
+    // Internal use to avoid unnecessary painting
     FIsHighlighted: Boolean;
     // Internal for detecting real clicks
     FGotMouseDown: Boolean;
@@ -168,7 +168,7 @@ type
   end;
 
   {$IFDEF RTL230_UP}
-  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64{$IFDEF RTL360_UP} or pidWin64x{$ENDIF RTL360_UP})]
   {$ENDIF RTL230_UP}
   TJvNetscapeSplitter = class(TJvCustomNetscapeSplitter)
   published

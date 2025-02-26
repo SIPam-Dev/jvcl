@@ -56,7 +56,7 @@ type
 
   {NEW IN JVCL3.0 - Enhanced DBEdit/DBMaskEdit }
   {$IFDEF RTL230_UP}
-  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64{$IFDEF RTL360_UP} or pidWin64x{$ENDIF RTL360_UP})]
   {$ENDIF RTL230_UP}
   TJvDBMaskEdit = class(TJvCustomMaskEdit) // same base as TJvMaskEdit, plus data aware.
   private
@@ -186,7 +186,7 @@ type
   end;
 
   {$IFDEF RTL230_UP}
-  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64{$IFDEF RTL360_UP} or pidWin64x{$ENDIF RTL360_UP})]
   {$ENDIF RTL230_UP}
   TJvDBComboEdit = class(TJvCustomComboEdit)
   private
@@ -311,7 +311,7 @@ type
   end;
 
   {$IFDEF RTL230_UP}
-  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64{$IFDEF RTL360_UP} or pidWin64x{$ENDIF RTL360_UP})]
   {$ENDIF RTL230_UP}
   TJvDBDateEdit = class(TJvCustomDateEdit)
   private
@@ -455,7 +455,7 @@ type
   end;
 
   {$IFDEF RTL230_UP}
-  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64{$IFDEF RTL360_UP} or pidWin64x{$ENDIF RTL360_UP})]
   {$ENDIF RTL230_UP}
   TJvDBCalcEdit = class(TJvCalcEdit)
   private
@@ -609,7 +609,7 @@ type
   TDBLabelOptions = (doCaption, doGlyph, doBoth);
 
   {$IFDEF RTL230_UP}
-  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64{$IFDEF RTL360_UP} or pidWin64x{$ENDIF RTL360_UP})]
   {$ENDIF RTL230_UP}
   TJvDBStatusLabel = class(TJvCustomLabel)
   private
@@ -710,7 +710,7 @@ type
   end;
 
   {$IFDEF RTL230_UP}
-  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64{$IFDEF RTL360_UP} or pidWin64x{$ENDIF RTL360_UP})]
   {$ENDIF RTL230_UP}
   TJvDBNavigator = class(TDBNavigator)
   private
@@ -2644,7 +2644,7 @@ begin
   {$IFDEF COMPILER7_UP}
   ParentBackground := Value;
   {$ENDIF COMPILER7_UP}
-  for Button := Low(Buttons) to High(Buttons) do
+  for Button := Low(TNavigateBtn) to High(TNavigateBtn) do
     Buttons[Button].Transparent := Value;
   Invalidate;
 end;

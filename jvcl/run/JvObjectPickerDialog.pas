@@ -131,7 +131,7 @@ type
       FDownLevelFilter default [];
     // name of a domain controller of the domain which the target computer is a member of, can be empty
     property DcName: string read FDcName write FDcName;
-    // indicates whether this scope was succesfully initialized
+    // indicates whether this scope was successfully initialized
     property Result: HRESULT read FResult default S_OK;
     // the type of scope (e.g. enterprise domain, global catalog or computer)
     property ScopeTypes: TScopeTypes read FScopeTypes write FScopeTypes default [];
@@ -231,7 +231,7 @@ type
   // the Object Picker dialog component
 
   {$IFDEF RTL230_UP}
-  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64{$IFDEF RTL360_UP} or pidWin64x{$ENDIF RTL360_UP})]
   {$ENDIF RTL230_UP}
   TJvObjectPickerDialog = class(TJvCommonDialog)
   private

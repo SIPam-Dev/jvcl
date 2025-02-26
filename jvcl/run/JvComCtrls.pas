@@ -174,7 +174,7 @@ type
   end;
 
   {$IFDEF RTL230_UP}
-  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64{$IFDEF RTL360_UP} or pidWin64x{$ENDIF RTL360_UP})]
   {$ENDIF RTL230_UP}
   TJvIPAddress = class(TJvCustomControl)
   private
@@ -329,7 +329,7 @@ type
   end;
 
   {$IFDEF RTL230_UP}
-  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64{$IFDEF RTL360_UP} or pidWin64x{$ENDIF RTL360_UP})]
   {$ENDIF RTL230_UP}
   TJvTabDefaultPainter = class(TJvTabControlPainter)
   private
@@ -393,7 +393,7 @@ type
   end;
 
   {$IFDEF RTL230_UP}
-  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64{$IFDEF RTL360_UP} or pidWin64x{$ENDIF RTL360_UP})]
   {$ENDIF RTL230_UP}
   TJvTabControl = class(TJvExTabControl)
   private
@@ -418,7 +418,7 @@ type
   end;
 
   {$IFDEF RTL230_UP}
-  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64{$IFDEF RTL360_UP} or pidWin64x{$ENDIF RTL360_UP})]
   {$ENDIF RTL230_UP}
   TJvPageControl = class(TJvExPageControl)
   private
@@ -468,7 +468,7 @@ type
   TJvTrackToolTipEvent = procedure(Sender: TObject; var ToolTipText: string) of object;
 
   {$IFDEF RTL230_UP}
-  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64{$IFDEF RTL360_UP} or pidWin64x{$ENDIF RTL360_UP})]
   {$ENDIF RTL230_UP}
   TJvTrackBar = class(TJvExTrackBar)
   private
@@ -528,6 +528,9 @@ type
   protected
     procedure Reinitialize; virtual;
     procedure DoCheckedChange;
+    {$IFDEF RTL360_UP}
+    class constructor Create;
+    {$ENDIF RTL360_UP}
   public
     class function CreateEnh(AOwner: TTreeNodes): TJvTreeNode;
 
@@ -556,7 +559,7 @@ type
     Cause: TJvNodeSelectCause; var Allow: Boolean) of object;
 
   {$IFDEF RTL230_UP}
-  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64{$IFDEF RTL360_UP} or pidWin64x{$ENDIF RTL360_UP})]
   {$ENDIF RTL230_UP}
   TJvTreeView = class(TJvExTreeView)
   private
@@ -2472,6 +2475,16 @@ begin
 end;
 
 //=== { TJvTreeNode } ========================================================
+
+{$IFDEF RTL360_UP}
+class constructor TJvTreeNode.Create;
+begin
+  // TTreeNodes.ReadNodeData no longer relies on its internal FClassNames (it clears it)
+  // but rahter requires that the node class is present in the list of registered classes
+  // for the indirectly called TTreeNodes.ReadNodeClass to find it.
+  RegisterClass(TJvTreeNode);
+end;
+{$ENDIF RTL360_UP}
 
 class function TJvTreeNode.CreateEnh(AOwner: TTreeNodes): TJvTreeNode;
 begin

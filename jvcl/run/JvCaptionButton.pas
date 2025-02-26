@@ -37,7 +37,7 @@ Modified 2003-06-13 (p3):
 
 Known Issues:
 
-  * Msimg32.dll code should be moved to seperate import unit. Code is partly
+  * Msimg32.dll code should be moved to separate import unit. Code is partly
     copied from JwaWinGDI.pas.
   * Button can disappear at design-time when switching themes.
   * With more buttons, button can appear hot while mouse is over another caption
@@ -98,7 +98,7 @@ type
   TJvCaptionButtonActionLinkClass = class of TJvCaptionButtonActionLink;
 
   {$IFDEF RTL230_UP}
-  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64{$IFDEF RTL360_UP} or pidWin64x{$ENDIF RTL360_UP})]
   {$ENDIF RTL230_UP}
   TJvCaptionButton = class(TJvComponent)
   private

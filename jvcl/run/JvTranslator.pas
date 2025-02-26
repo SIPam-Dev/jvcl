@@ -40,7 +40,7 @@ uses
 
 type
   {$IFDEF RTL230_UP}
-  [ComponentPlatformsAttribute(pidWin32 or pidWin64 or pidOSX32)]
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64 or pidOSX32{$IFDEF RTL360_UP} or pidWin64x{$ENDIF RTL360_UP})]
   {$ENDIF RTL230_UP}
   TJvTranslator = class(TJvComponent)
   private
@@ -64,7 +64,7 @@ type
     // Call UnskipProperty to unregister a class property so it won't be skipped when reading/writing
     // If SkipClass has already been called for this class, does nothing
     procedure UnskipProperty(AClass: TClass; const PropName: string);
-    // Returns True if the specifed class/object/property is in the skip list
+    // Returns True if the specified class/object/property is in the skip list
     function InSkipList(AClass: TClass): Boolean; overload;
     function InSkipList(Obj: TObject): Boolean; overload;
     function InSkipList(AClass: TClass; const PropName: string): Boolean; overload;
@@ -109,7 +109,7 @@ type
   end;
 
   {$IFDEF RTL230_UP}
-  [ComponentPlatformsAttribute(pidWin32 or pidWin64 or pidOSX32)]
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64 or pidOSX32{$IFDEF RTL360_UP} or pidWin64x{$ENDIF RTL360_UP})]
   {$ENDIF RTL230_UP}
   TJvTranslatorStrings = class(TJvComponent)
   private

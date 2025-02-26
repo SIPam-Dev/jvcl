@@ -385,7 +385,7 @@ type
   end;
 
   {$IFDEF RTL230_UP}
-  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64{$IFDEF RTL360_UP} or pidWin64x{$ENDIF RTL360_UP})]
   {$ENDIF RTL230_UP}
   TJvPreviewControl = class(TJvCustomPreviewControl)
   published
@@ -1336,10 +1336,10 @@ begin
     SB_ENDSCROLL:
       Exit;
   end;
-  NewPos := EnsureRange(NewPos, SI.nMin, SI.nMax - Max(SI.nPage - 1, 0));
+  NewPos := EnsureRange(NewPos, SI.nMin, SI.nMax - Max(Integer(SI.nPage) - 1, 0));
   if Assigned(FOnHorzScroll) then
     FOnHorzScroll(Self, TScrollCode(Msg.ScrollCode), NewPos);
-  NewPos := EnsureRange(NewPos, SI.nMin, SI.nMax - Max(SI.nPage - 1, 0));
+  NewPos := EnsureRange(NewPos, SI.nMin, SI.nMax - Max(Integer(SI.nPage) - 1, 0));
   // Old versions of JVCL called ScrollBy, but it's redundant with SetScrollInfo.
   //ScrollBy(-FScrollPos.X + NewPos, 0);
   FScrollPos.X := NewPos;
@@ -1400,10 +1400,10 @@ begin
         Exit;
       end;
   end;
-  NewPos := EnsureRange(NewPos, SI.nMin, SI.nMax - Max(SI.nPage - 1, 0));
+  NewPos := EnsureRange(NewPos, SI.nMin, SI.nMax - Max(Integer(SI.nPage) - 1, 0));
   if Assigned(FOnVertScroll) then
     FOnVertScroll(Self, TScrollCode(Msg.ScrollCode), NewPos);
-  NewPos := EnsureRange(NewPos, SI.nMin, SI.nMax - Max(SI.nPage - 1, 0));
+  NewPos := EnsureRange(NewPos, SI.nMin, SI.nMax - Max(Integer(SI.nPage) - 1, 0));
   // Old versions of JVCL called ScrollBy, but it's redundant with SetScrollInfo.
   //ScrollBy(0, -FScrollPos.Y + NewPos);
   FScrollPos.Y := NewPos;

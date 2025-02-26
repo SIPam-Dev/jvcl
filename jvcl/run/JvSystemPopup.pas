@@ -49,7 +49,7 @@ type
   TJvPositionInMenu = (pmTop, pmBottom);
 
   {$IFDEF RTL230_UP}
-  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64{$IFDEF RTL360_UP} or pidWin64x{$ENDIF RTL360_UP})]
   {$ENDIF RTL230_UP}
   TJvSystemPopup = class(TJvComponent)
   private
@@ -392,7 +392,7 @@ begin
     MenuItemInfo.fMask := MIIM_CHECKMARKS or MIIM_DATA or
       MIIM_ID or MIIM_STATE or MIIM_SUBMENU or MIIM_TYPE;
     MenuItemInfo.fType := MFT_SEPARATOR;
-    { Give the seperator menu id $EFFF so we can seperate these from the
+    { Give the seperator menu id $EFFF so we can separate these from the
       normal seperators (with id=0), that we don't want to remove in procedure
       RemoveNonDefaultItems }
     MenuItemInfo.wID := $EFFF;

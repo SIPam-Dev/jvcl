@@ -173,7 +173,7 @@ type
   TJvFormatDriveErrorEvent = procedure(Sender: TObject; Error: TJvFormatDriveError) of object;
 
   {$IFDEF RTL230_UP}
-  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64{$IFDEF RTL360_UP} or pidWin64x{$ENDIF RTL360_UP})]
   {$ENDIF RTL230_UP}
   TJvFormatDriveDialog = class(TJvCommonDialog)
   private
@@ -195,7 +195,7 @@ type
   end;
 
   {$IFDEF RTL230_UP}
-  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64{$IFDEF RTL360_UP} or pidWin64x{$ENDIF RTL360_UP})]
   {$ENDIF RTL230_UP}
   TJvOrganizeFavoritesDialog = class(TJvCommonDialog)
   public
@@ -214,7 +214,7 @@ type
 
   // (rom) largely reimplemented
   {$IFDEF RTL230_UP}
-  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64{$IFDEF RTL360_UP} or pidWin64x{$ENDIF RTL360_UP})]
   {$ENDIF RTL230_UP}
   TJvAppletDialog = class(TJvCommonDialog)
   private
@@ -243,7 +243,7 @@ type
   end;
 
   {$IFDEF RTL230_UP}
-  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64{$IFDEF RTL360_UP} or pidWin64x{$ENDIF RTL360_UP})]
   {$ENDIF RTL230_UP}
   TJvComputerNameDialog = class(TJvCommonDialog)
   private
@@ -259,7 +259,7 @@ type
 
   // (p3) could be removed - a more complete implementation is in JvBrowseFolder
   {$IFDEF RTL230_UP}
-  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64{$IFDEF RTL360_UP} or pidWin64x{$ENDIF RTL360_UP})]
   {$ENDIF RTL230_UP}
   TJvBrowseFolderDialog = class(TJvCommonDialog)
   private
@@ -274,7 +274,7 @@ type
   end;
 
   {$IFDEF RTL230_UP}
-  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64{$IFDEF RTL360_UP} or pidWin64x{$ENDIF RTL360_UP})]
   {$ENDIF RTL230_UP}
   TJvOutOfMemoryDialog = class(TJvCommonDialog)
   private
@@ -287,7 +287,7 @@ type
 
   // (rom) changed to new TJvCommonDialog to get better Execute
   {$IFDEF RTL230_UP}
-  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64{$IFDEF RTL360_UP} or pidWin64x{$ENDIF RTL360_UP})]
   {$ENDIF RTL230_UP}
   TJvChangeIconDialog = class(TJvCommonDialog)
   private
@@ -301,7 +301,7 @@ type
   end;
 
   {$IFDEF RTL230_UP}
-  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64{$IFDEF RTL360_UP} or pidWin64x{$ENDIF RTL360_UP})]
   {$ENDIF RTL230_UP}
   TJvShellAboutDialog = class(TJvCommonDialog)
   private
@@ -324,7 +324,7 @@ type
   end;
 
   {$IFDEF RTL230_UP}
-  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64{$IFDEF RTL360_UP} or pidWin64x{$ENDIF RTL360_UP})]
   {$ENDIF RTL230_UP}
   TJvRunDialog = class(TJvCommonDialog)
   private
@@ -343,7 +343,7 @@ type
   end;
 
   {$IFDEF RTL230_UP}
-  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64{$IFDEF RTL360_UP} or pidWin64x{$ENDIF RTL360_UP})]
   {$ENDIF RTL230_UP}
   TJvObjectPropertiesDialog = class(TJvCommonDialog)
   private
@@ -359,7 +359,7 @@ type
   end;
 
   {$IFDEF RTL230_UP}
-  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64{$IFDEF RTL360_UP} or pidWin64x{$ENDIF RTL360_UP})]
   {$ENDIF RTL230_UP}
   TJvNewLinkDialog = class(TJvCommonDialog)
   private
@@ -371,7 +371,7 @@ type
   end;
 
   {$IFDEF RTL230_UP}
-  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64{$IFDEF RTL360_UP} or pidWin64x{$ENDIF RTL360_UP})]
   {$ENDIF RTL230_UP}
   TJvAddHardwareDialog = class(TJvCommonDialog)
   public
@@ -379,7 +379,7 @@ type
   end;
 
   {$IFDEF RTL230_UP}
-  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64{$IFDEF RTL360_UP} or pidWin64x{$ENDIF RTL360_UP})]
   {$ENDIF RTL230_UP}
   TJvOpenWithDialog = class(TJvCommonDialog)
   private
@@ -391,7 +391,7 @@ type
   end;
 
   {$IFDEF RTL230_UP}
-  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64{$IFDEF RTL360_UP} or pidWin64x{$ENDIF RTL360_UP})]
   {$ENDIF RTL230_UP}
   TJvDiskFullDialog = class(TJvCommonDialog)
   private
@@ -412,7 +412,7 @@ type
   );
 
   {$IFDEF RTL230_UP}
-  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64{$IFDEF RTL360_UP} or pidWin64x{$ENDIF RTL360_UP})]
   {$ENDIF RTL230_UP}
   TJvExitWindowsDialog = class(TJvCommonDialog)
   private
@@ -458,7 +458,7 @@ type
     property AssociatedApp: string read FAssociatedApp;
     // Value returned by the function called by Execute.
     // Possible return values:
-    // S_OK -  content type succesfully associated with the extnesion
+    // S_OK -  content type successfully associated with the extnesion
     // S_FALSE - nothing was registered (f ex a one time registration)
     property ReturnValue: HRESULT read FReturnValue;
   published
@@ -491,7 +491,7 @@ type
     property AssociatedApp: string read FAssociatedApp;
     // Value returned by the function called by Execute.
     // Possible return values:
-    // S_OK -  content type succesfully associated with the extnesion
+    // S_OK -  content type successfully associated with the extnesion
     // S_FALSE - nothing was registered
     // E_ABORT - user cancelled
     // E_FLAGS - invalid flag combination
@@ -633,7 +633,7 @@ type
     CmdShow: Integer); stdcall;
   GetOpenFileNameExProc = function(var OpenFile: TOpenFileNameEx): BOOL; stdcall;
   GetSaveFileNameExProc = function(var SaveFile: TOpenFileNameEx): BOOL; stdcall;
-  
+
   URLAssociationDialogProcA = function(hwndParent: THandle; dwInFlags: DWORD; const pcszFile: PAnsiChar; const pcszURL: PAnsiChar;
     pszBuff: PAnsiChar; ucAppBufLen: UINT): HRESULT; stdcall;
   URLAssociationDialogProcW = function(hwndParent: THandle; dwInFlags: DWORD; const pcszFile: PWideChar; const pcszURL:

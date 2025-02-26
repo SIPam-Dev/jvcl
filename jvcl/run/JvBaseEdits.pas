@@ -104,8 +104,8 @@ type
     function FormatDisplayText(Value: Extended): string;
     function GetDisplayText: string; virtual;
     procedure Reset; override;
-    procedure CheckRange;
-    procedure UpdateData;
+    procedure CheckRange; virtual;
+    procedure UpdateData; virtual;
     procedure UpdatePopup; virtual;
     property Formatting: Boolean read FFormatting;
     property Alignment: TAlignment read FAlignment write SetAlignment default taRightJustify;
@@ -221,7 +221,7 @@ type
   end;
 
   {$IFDEF RTL230_UP}
-  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64{$IFDEF RTL360_UP} or pidWin64x{$ENDIF RTL360_UP})]
   {$ENDIF RTL230_UP}
   TJvCalcEdit = class(TJvCustomCalcEdit)
   published

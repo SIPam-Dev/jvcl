@@ -52,6 +52,9 @@ type
   private
     FPageIndex: Integer;
     procedure SetPageIndex(const Value: Integer);
+    {$IFDEF RTL360_UP}
+    class constructor Create;
+    {$ENDIF RTL360_UP}
   published
     procedure Assign(Source: TPersistent); override;
     property PageIndex: Integer read FPageIndex write SetPageIndex;
@@ -200,7 +203,7 @@ type
   end;
 
   {$IFDEF RTL230_UP}
-  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64{$IFDEF RTL360_UP} or pidWin64x{$ENDIF RTL360_UP})]
   {$ENDIF RTL230_UP}
   TJvPageListTreeView = class(TJvCustomPageListTreeView)
   published
@@ -292,7 +295,7 @@ type
   end;
 
   {$IFDEF RTL230_UP}
-  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64{$IFDEF RTL360_UP} or pidWin64x{$ENDIF RTL360_UP})]
   {$ENDIF RTL230_UP}
   TJvSettingsTreeView = class(TJvCustomSettingsTreeView)
   published
@@ -583,6 +586,16 @@ begin
 end;
 
 //=== { TJvPageIndexNode } ===================================================
+
+{$IFDEF RTL360_UP}
+class constructor TJvPageIndexNode.Create;
+begin
+  // TTreeNodes.ReadNodeData no longer relies on its internal FClassNames (it clears it)
+  // but rahter requires that the node class is present in the list of registered classes
+  // for the indirectly called TTreeNodes.ReadNodeClass to find it.
+  Classes.RegisterClass(TJvPageIndexNode);
+end;
+{$ENDIF RTL360_UP}
 
 procedure TJvPageIndexNode.Assign(Source: TPersistent);
 begin

@@ -48,6 +48,9 @@ uses
   {$IFDEF UNITVERSIONING}
   JclUnitVersioning,
   {$ENDIF UNITVERSIONING}
+  {$IFDEF HAS_UNIT_TYPES}
+  Types,
+  {$ENDIF HAS_UNIT_TYPES}
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms,
   Menus, ShellAPI, ImgList, DateUtils,
   JvComponentBase;
@@ -91,7 +94,7 @@ type
   TJvTrayIconStates = set of TJvTrayIconState;
 
   {$IFDEF RTL230_UP}
-  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64{$IFDEF RTL360_UP} or pidWin64x{$ENDIF RTL360_UP})]
   {$ENDIF RTL230_UP}
   TJvTrayIcon = class(TJvComponent)
   private
@@ -1301,6 +1304,8 @@ begin
 end;
 
 procedure TJvTrayIcon.ShowApplication;
+var
+  AppHidden: Boolean;
 begin
   // Note: some actions will show/hide the taskbar button of the application,
   // so we have to do them in a certain order.
@@ -1315,11 +1320,12 @@ begin
       Application.ShowMainForm := True;
   end;
 
+  AppHidden := not ApplicationVisible;
   // Show the taskbar button of the application..
   Include(FVisibility, tvVisibleTaskBar);
   ShowWindow(GetHandleOnTaskBar, SW_SHOW);
 
-  if not ApplicationVisible then
+  if AppHidden then
   begin
     if (tvAnimateToTray in Visibility) and Assigned(Application.MainForm) then
       AnimateFromTray(Application.MainForm.Handle);
@@ -1337,6 +1343,8 @@ begin
     {$ENDIF COMPILER11_UP}
     if Application.MainForm <> nil then
       Application.MainForm.Visible := True;
+    if Snap or (tvAnimateToTray in Visibility) then
+      Application.ShowMainForm := True;
   end;
 
   Exclude(FState, tisAppHiddenButNotMinimized);

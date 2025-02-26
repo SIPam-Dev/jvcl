@@ -201,7 +201,7 @@ type
       // link the map file in the binary file
 
     function CompressMapFileToJdbg(const MapFileName: string): Boolean;
-      // compresses the map file to a jdbg file      
+      // compresses the map file to a jdbg file
 
     property TargetSymbol: string read GetTargetSymbol;
       // TargetSymbol returns the symbol that is used in the xml files for this
@@ -398,7 +398,7 @@ type
 implementation
 
 uses
-  JclFileUtils, JclStrings,
+  JclFileUtils, JclStrings, JclIDEUtils,
   Utils, CmdLineUtils, PackageInformation, JediRegInfo;
 
 resourcestring
@@ -808,6 +808,13 @@ begin
   Result := FJVCLRegistryConfig;
 end;
 
+procedure AddCppPaths(ATarget: TCompileTarget; AIncludePaths, ABrowsingPaths, ALibraryPaths: TStrings; const AJVCLDir, AHppDir, AUnitOutDir: string);
+begin
+  AddPaths(AIncludePaths, True, AJVCLDir, [AHppDir]);
+  AddPaths(ABrowsingPaths, True, AJVCLDir, ['run', 'common']); // do not localize
+  AddPaths(ALibraryPaths, True, AJVCLDir, ['Resources', AUnitOutDir]); // do not localize
+end;
+
 procedure TTargetConfig.AddPathsToIDE;
 begin
   if InstalledJVCLVersion < 3 then
@@ -842,12 +849,14 @@ begin
       [Target.InsertDirMacros(DebugUnitOutDir)]); // do not localize
   if Target.SupportsPersonalities([persBCB]) then
   begin
-    AddPaths(Target.GlobalIncludePaths, True, Owner.JVCLDir,
-     [Target.InsertDirMacros(HppDir)]);
-    AddPaths(Target.GlobalCppBrowsingPaths, True, Owner.JVCLDir,
-      ['run', 'common']); // do not localize
-    AddPaths(Target.GlobalCppLibraryPaths, True, Owner.JVCLDir,
-      ['Resources', Target.InsertDirMacros(UnitOutDir)]); // do not localize
+    AddCppPaths(Target, Target.GlobalIncludePaths, Target.GlobalCppBrowsingPaths, Target.GlobalCppLibraryPaths,
+      Owner.JVCLDir, Target.InsertDirMacros(HppDir), Target.InsertDirMacros(UnitOutDir));
+
+    AddCppPaths(Target, Target.GlobalIncludePathsClang32, Target.GlobalCppBrowsingPathsClang32, Target.GlobalCppLibraryPathsClang32,
+      Owner.JVCLDir, Target.InsertDirMacros(HppDir), Target.InsertDirMacros(UnitOutDir));
+
+    AddCppPaths(Target, Target.GlobalIncludePathsWin64x, Target.GlobalCppBrowsingPathsWin64x, Target.GlobalCppLibraryPathsWin64x,
+      Owner.JVCLDir, Target.InsertDirMacros(HppDir), TJclBorRADToolInstallation.AdjustPathForWin64X(Target.InsertDirMacros(UnitOutDir)));
   end;
 
   // add
@@ -870,7 +879,7 @@ end;
 function TTargetConfig.IsUpToDate: Boolean;
 begin
   Result := True;
-  
+
   if Target.IsDelphi then
   begin
     if Target.Version = 6 then
@@ -896,7 +905,7 @@ begin
     end;
   end;}
 
-  // The IDE is up to date because the JCL Installer garantees this for us.
+  // The IDE is up to date because the JCL Installer guarantees this for us.
   // The JVCL requires an installed JCL, so this is no problem.
 //  Result := True;
 end;

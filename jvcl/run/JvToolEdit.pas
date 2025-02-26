@@ -427,7 +427,7 @@ type
   end;
 
   {$IFDEF RTL230_UP}
-  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64{$IFDEF RTL360_UP} or pidWin64x{$ENDIF RTL360_UP})]
   {$ENDIF RTL230_UP}
   TJvComboEdit = class(TJvCustomComboEdit)
   public
@@ -606,7 +606,7 @@ type
   TFileDialogKind = (dkOpen, dkSave, dkOpenPicture, dkSavePicture);
 
   {$IFDEF RTL230_UP}
-  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64{$IFDEF RTL360_UP} or pidWin64x{$ENDIF RTL360_UP})]
   {$ENDIF RTL230_UP}
   TJvFilenameEdit = class(TJvFileDirEdit)
   private
@@ -746,7 +746,7 @@ type
   TDirDialogKind = (dkVCL, dkWin32);
 
   {$IFDEF RTL230_UP}
-  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64{$IFDEF RTL360_UP} or pidWin64x{$ENDIF RTL360_UP})]
   {$ENDIF RTL230_UP}
   TJvDirectoryEdit = class(TJvFileDirEdit)
   private
@@ -1007,7 +1007,7 @@ type
   end;
 
   {$IFDEF RTL230_UP}
-  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64{$IFDEF RTL360_UP} or pidWin64x{$ENDIF RTL360_UP})]
   {$ENDIF RTL230_UP}
   TJvDateEdit = class(TJvCustomDateEdit)
   protected
@@ -1171,7 +1171,7 @@ uses
 type
   TCustomMaskEditAccessPrivate = class(TCustomEdit)
   protected
-    {$IFDEF RTL360_UP}
+    {$IFDEF RTL370_UP}
       {$MESSAGE WARN 'Check if Vcl.Mask.TCustomMaskEdit still has the exact same fields and adjust the IFDEF'}
     {$ENDIF}
     // Do not remove these fields, although they are not used.
@@ -1781,7 +1781,7 @@ begin
   FPopupAlign := epaRight;
   FBtnControl := TJvBtnWinControl.Create(Self);
   with FBtnControl do
-    ControlStyle := ControlStyle + [csReplicatable];
+    ControlStyle := ControlStyle + [csReplicatable{$IFDEF RTL150_UP}, csParentBackground{$ENDIF}];
   FBtnControl.Width := DefEditBtnWidth;
   FBtnControl.Height := 17;
   FBtnControl.Visible := True;

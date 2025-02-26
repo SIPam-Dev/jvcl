@@ -59,7 +59,7 @@ type
   Tfreepoly = array [0..100] of TPoint;
 
   {$IFDEF RTL230_UP}
-  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64{$IFDEF RTL360_UP} or pidWin64x{$ENDIF RTL360_UP})]
   {$ENDIF RTL230_UP}
   TJvDrawImage = class(TImage)
   private
@@ -372,7 +372,7 @@ begin
   myslinetol := 5;
 
   mypenstyle := psSolid;
-  // number of Blocks wide and heigh
+  // number of Blocks wide and height
   Blocks := 32;
   // rounding of roundrect
   myround := 10;
