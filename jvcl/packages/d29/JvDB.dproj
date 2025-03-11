@@ -74,7 +74,14 @@
         <DCCReference Include="vcldb.dcp"/>
         <DCCReference Include="adortl.dcp"/>
         <DCCReference Include="vclx.dcp"/>
+        <DCCReference Include="ODAC290.dcp"/>
+        <DCCReference Include="ODACVCL290.dcp"/>
+        <DCCReference Include="UNIDAC290.dcp"/>
+        <DCCReference Include="UNIDACVCL290.dcp"/>
         <DCCReference Include="vclimg.dcp"/>
+        <DCCReference Include="cxGridRS29.dcp"/>
+        <DCCReference Include="cxTreeListRS29.dcp"/>
+        <DCCReference Include="cxPivotGridRS29.dcp"/>
         <DCCReference Include="..\..\run\JvAppStoragePropertyEngineDB.pas"/>
         <DCCReference Include="..\..\run\JvMemoryDataset.pas"/>
         <DCCReference Include="..\..\run\JvExprParser.pas"/>
@@ -83,6 +90,7 @@
         <DCCReference Include="..\..\run\JvDBActions.pas"/>
         <DCCReference Include="..\..\run\JvDBActionsEngine.pas"/>
         <DCCReference Include="..\..\run\JvDBActionsEngineDatasetCSVDataset.pas"/>
+        <DCCReference Include="..\..\run\JvDBActionsEngineDatasetDevart.pas"/>
         <DCCReference Include="..\..\run\JvDBCombobox.pas"/>
         <DCCReference Include="..\..\run\JvDBControls.pas"/>
         <DCCReference Include="..\..\run\JvDBDatePickerEdit.pas"/>
@@ -93,7 +101,11 @@
         <DCCReference Include="..\..\run\JvBaseDBDialog.pas"/>
         <DCCReference Include="..\..\run\JvBaseDBPasswordDialog.pas"/>
         <DCCReference Include="..\..\run\JvBaseDBLogonDialog.pas"/>
+        <DCCReference Include="..\..\run\JvDBLogonDialogBaseDevart.pas"/>
+        <DCCReference Include="..\..\run\JvDBLogonDialogOdac.pas"/>
+        <DCCReference Include="..\..\run\JvDBLogonDialogUniDac.pas"/>
         <DCCReference Include="..\..\run\JvDBLookupTreeView.pas"/>
+        <DCCReference Include="..\..\run\JvDBPasswordDialogOdac.pas"/>
         <DCCReference Include="..\..\run\JvDBProgressBar.pas"/>
         <DCCReference Include="..\..\run\JvDBQueryParamsForm.pas"/>
         <DCCReference Include="..\..\run\JvDBRadioPanel.pas"/>
@@ -120,6 +132,8 @@
         <DCCReference Include="..\..\run\JvDynControlEngineDBIntf.pas"/>
         <DCCReference Include="..\..\run\JvDynControlEngineVCLDB.pas"/>
         <DCCReference Include="..\..\run\JvDynControlEngineJVCLDB.pas"/>
+        <DCCReference Include="..\..\run\JvOdacSmartQuery.pas"/>
+        <DCCReference Include="..\..\run\JvUniDacQuery.pas"/>
         <DCCReference Include="..\..\run\JvDBCheckBox.pas"/>
         <DCCReference Include="..\..\run\JvDBFilterExpr.pas"/>
         <DCCReference Include="..\..\run\JvADOQuery.pas"/>
